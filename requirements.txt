@@ -1,0 +1,6 @@
+feedparser
+Flask-JSGlue
+Flask
+Flask-Session
+passlib
+SQLAlchemy
