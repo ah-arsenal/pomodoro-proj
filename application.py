@@ -143,3 +143,12 @@ def register():
 def registered():
     return success()
 
+@app.route("/start", methods=["GET", "POST"])
+def timerStart(): 
+    db.execute("INSERT INTO history ")
+
+@app.route("/success", methods=["GET", "POST"])
+def timerSuccess():
+    task_name = 
+    
+    return redirect(url_for("index"))

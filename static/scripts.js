@@ -49,9 +49,6 @@ function getTime(){
     return duration;
 }
 
-// window.onload = function () {
-//         setTimeout(function(){
-//             getTime();
-//         }, 1000);
-// };
-
+function resetTimer(){
+    document.querySelector('#time').textContent = "25:00";
+}
