@@ -18,6 +18,12 @@ function startTimer() {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
+        if (minutes == "00" && seconds == "00"){
+            clearInterval(window.timerRunning);
+            // do things in python
+        }
+        else {}
+
         document.querySelector('#time').textContent = minutes + ":" + seconds;
 
         if (diff <= 0) {
@@ -28,11 +34,11 @@ function startTimer() {
     }
     // we don't want to wait a full second before the timer starts
     timer();
-    setInterval(timer, 1000);
+    window.timerRunning = setInterval(timer, 1000);
 }
 
 function stopTimer() {
-
+    clearInterval(window.timerRunning);
 }
 
 
