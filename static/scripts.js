@@ -4,7 +4,7 @@ function startTimer() {
         minutes,
         seconds,
         duration = (parseInt(($("#time").text().split(':')[0]),10) * 60) + parseInt(($("#time").text().split(':')[1]),10);
-        console.log(duration);        //parseInt((document.querySelector('#time').split(',')[0]),10) * 60 + parseInt((document.querySelector('#time').split(',')[0]),10); // remaining on the clock
+        console.log(duration);   // remaining on the clock
     function timer() {
         // get the number of seconds that have elapsed since
         // startTimer() was called
@@ -20,7 +20,18 @@ function startTimer() {
 
         if (minutes == "00" && seconds == "00"){
             clearInterval(window.timerRunning);
-            // do things in python
+            $(function() {
+                $.ajax({
+                    url: '/successlog',
+                    type: 'GET',
+                    success: function(type) {
+                        console.log(type);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
         }
         else {}
 
@@ -34,6 +45,14 @@ function startTimer() {
     }
     // we don't want to wait a full second before the timer starts
     timer();
+    $(function() {
+        $.ajax({
+            url: '/startlog',
+            type: 'GET',
+            error: function(error) {
+                console.log(error);
+                }});
+    });
     window.timerRunning = setInterval(timer, 1000);
 }
 
@@ -50,5 +69,7 @@ function getTime(){
 }
 
 function resetTimer(){
+    stopTimer()
     document.querySelector('#time').textContent = "25:00";
 }
+

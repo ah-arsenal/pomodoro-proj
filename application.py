@@ -143,12 +143,16 @@ def register():
 def registered():
     return success()
 
-@app.route("/start", methods=["GET", "POST"])
-def timerStart(): 
-    db.execute("INSERT INTO history ")
+@app.route("/startlog", methods=["GET"])
+@login_required
+def startlog():
+    task_name = request.form["task_name"]
+    print(task_name)
+    db.execute("INSERT INTO history (user_id, task_name) VALUES(:user_id, :task_name);", user_id = session["user_id"], task_name = task_name)
 
-@app.route("/success", methods=["GET", "POST"])
-def timerSuccess():
-    task_name = 
-    
-    return redirect(url_for("index"))
+
+@app.route("/successlog", methods=["GET"])
+@login_required
+def successlog():
+    last_task_id = db.execute("SELECT id FROM history WHERE user_id = :user_id ORDER BY created DESC LIMIT 1;", user_id = session["user_id"])
+    db.execute("UPDATE history SET success = TRUE WHERE id = :last_task_id;", last_task_id = last_task_id)
