@@ -22,14 +22,8 @@ function startTimer() {
             clearInterval(window.timerRunning);
             $(function() {
                 $.ajax({
-                    url: '/successlog',
+                    url: '/successlog/',
                     type: 'GET',
-                    success: function(type) {
-                        console.log(type);
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
                 });
             });
         }
@@ -47,11 +41,9 @@ function startTimer() {
     timer();
     $(function() {
         $.ajax({
-            url: '/startlog',
-            type: 'GET',
-            error: function(error) {
-                console.log(error);
-                }});
+            url: "/startlog",
+            type: "GET"
+            });
     });
     window.timerRunning = setInterval(timer, 1000);
 }

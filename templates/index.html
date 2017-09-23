@@ -65,7 +65,7 @@
             <!-- http://getbootstrap.com/css/#forms -->
             <div id="default_container">
                 <div id="timer">
-  		        <h1 style="display:inline;" id="time">00:10</h1>
+  		        <h1 style="display:inline;" id="time">25:00</h1>
   		        <br>
 	            </div>
 	        </div>
@@ -73,7 +73,7 @@
             <input type="text"  class="form-control" id="task_name" name="task_name" placeholder="Enter Task Name" text-align:center method="post" role="form">
         </div>
 	    <div class="container-fluid">
-	        <button type="button" class="btn btn-success" href="#" name="startbutton" onClick="startTimer()">Start</button>
+	        <button type="button" class="btn btn-success" href="{{ url_for('startlog') }}" name="startbutton" onClick="startTimer()">Start</button>
             <button type="button" class="btn btn-danger" href="#" onClick="stopTimer()">Stop</button>
             <button type="button" class="btn btn-info" href="#" onClick="resetTimer()">Reset</button>
 	    </div>

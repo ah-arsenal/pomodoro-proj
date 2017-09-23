@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <head>
+      <style>
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+      }
+
+      td, th {
+          border: 1px solid #f2f2f2;
+          text-align: left;
+          padding: 8px;
+      }
+
+      tr:nth-child(even) {
+          background-color: #f2f2f2;
+      }
+      </style>
+      </head>
+      <body>
+        <div class = "container-fluid">
+      <h3>The Pomodoro Clock</h3>
+      <p> The pomodoro clock is used to break up work on tasks into manageable 25 minute intervals, </br>
+      where a break is scheduled upon completion of a successful 25 minute interval of work.</br>
+      To use the timer, enter your task name in the "Enter Task Name" form box and press start. </br>
+      The timer will start. When the timer runs out, the task is recorded in your history as a success. </br>
+      If you leave the page before the timer runs out, the task is recorded as a failure. </br>
+      You can see your history of successful and failed pomodoros (last 10 only shown) in the history tab.</br>
+      Thanks for using and happy pomodoro-ing!</br>
+      -- Aqil --
+      </p>
+      </div>
+      </body>
+
+{% endblock %}

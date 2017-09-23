@@ -147,8 +147,9 @@ def registered():
 @login_required
 def startlog():
     task_name = request.form["task_name"]
-    print(task_name)
-    db.execute("INSERT INTO history (user_id, task_name) VALUES(:user_id, :task_name);", user_id = session["user_id"], task_name = task_name)
+    console.log(task_name)
+    db.execute("INSERT INTO history (user_id, task_name) VALUES (:user_id, :task_name);", user_id = session["user_id"], task_name = task_name)
+    pass
 
 
 @app.route("/successlog", methods=["GET"])
@@ -156,3 +157,10 @@ def startlog():
 def successlog():
     last_task_id = db.execute("SELECT id FROM history WHERE user_id = :user_id ORDER BY created DESC LIMIT 1;", user_id = session["user_id"])
     db.execute("UPDATE history SET success = TRUE WHERE id = :last_task_id;", last_task_id = last_task_id)
+    pass
+
+@app.route("/about")
+def about():
+
+    # redirect user to about page
+    return render_template("about.html")
